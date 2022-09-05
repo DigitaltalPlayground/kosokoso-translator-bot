@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx node src/entry",
     "apply": "npx node src/register",
-    "applyapp": "npx node src/registerapp"
+    "applyapp": "npx node src/registerapp",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "mtripg6666tdr",
@@ -19,6 +20,9 @@
     "dotenv": "^10.0.0"
   },
   "devDependencies": {
-    "node": "^16.1.0"
+    "@types/node": "^18.7.15",
+    "@types/node-fetch": "^2.6.2",
+    "node": "^16.1.0",
+    "typescript": "^4.8.2"
   }
 }
