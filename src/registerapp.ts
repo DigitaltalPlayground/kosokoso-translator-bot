@@ -1,8 +1,8 @@
-require("dotenv").config();
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
-const fs = require('fs');
-const path = require("path");
+import "./dotenv"
+import { REST } from "@discordjs/rest";
+import { Routes } from "discord-api-types/v9";
+import * as fs from "fs";
+import * as path from "path";
 
 const commands = [];
 const commandFiles = fs.readdirSync(path.join(__dirname, './commands'), {withFileTypes: true})
@@ -12,7 +12,6 @@ const commandFiles = fs.readdirSync(path.join(__dirname, './commands'), {withFil
 
 // Place your client and guild ids here
 const clientId = process.env.CLIENT_ID;
-const guildId = process.env.GUILD_ID;
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
@@ -26,7 +25,7 @@ const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
 		console.log('Started refreshing application (/) commands.');
 
 		await rest.put(
-			Routes.applicationGuildCommands(clientId, guildId),
+			Routes.applicationCommands(clientId),
 			{ body: commands },
 		);
 
