@@ -1,7 +1,8 @@
-const { SlashCommandBuilder, SlashCommandStringOption } = require('@discordjs/builders');
-const lib = require("../lib");
+import { SlashCommandBuilder, SlashCommandStringOption } from "@discordjs/builders";
+import { CommandInteraction } from "discord.js";
+import * as lib from "../lib";
 
-module.exports = {
+export default {
 	name: "translatek",
 	data: new SlashCommandBuilder()
 		.setName('translatek')
@@ -12,11 +13,8 @@ module.exports = {
 			.setDescription("翻訳対象のテキスト")
 			.setRequired(true)
 		)
-		,
-		/**
-		 * @param {import("discord.js").CommandInteraction} interaction 
-		 */
-	async execute(interaction) {
+	,
+	async execute(interaction:CommandInteraction) {
 		try{
 			await interaction.reply({
 				content: "`こそこそ語` から `日本語` への翻訳結果:\r\n```" +

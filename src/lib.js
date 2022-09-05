@@ -1,3 +1,5 @@
+/** @typedef {Symbol("CID")} CID */
+/** @param {string} text @returns {number[]} */
 function TextToByteArray(text){
   if(typeof text !== "string") throw new Error("Received param is not a string!");
   const result = [];
@@ -18,6 +20,7 @@ function TextToByteArray(text){
   }
   return result;
 }
+/** @param {number[]} arr @returns {string} */
 function ByteArrayToText(arr) {
   if(!Array.isArray(arr)) throw new Error("Received param is not an array!");
   if (arr == null)
@@ -51,7 +54,8 @@ function ByteArrayToText(arr) {
 // 翻訳元の文字列を通常文字と翻訳で置換されない特殊に分割した配列にし、通常文字を0と1の数値に変換したもの
 // !!!
 
-// テキストからCIDに変換
+/** テキストからCIDに変換
+ * @param {string} value @returns {CID} */
 function convertTextToCID(value){
   if(typeof value !== "string") throw new Error("Received param is not a string!");
   return value.split("").map(function(char){
@@ -72,7 +76,8 @@ function convertTextToCID(value){
     }
   });
 }
-// こそこそ語(可逆)をCIDに変換
+/**こそこそ語(可逆)をCIDに変換
+ * @param {string} koso1 @return {CID} */
 function convertKoso1ToCID(value){
   if(typeof value !== "string") throw new Error("Received param is not a string!");
   const raw = value.split('')
@@ -109,7 +114,8 @@ function convertKoso1ToCID(value){
     result.push(current.join(""));
   return result;
 }
-// CIDからテキストに変換
+/**CIDからテキストに変換
+ * @param {CID} value @return {string} */
 function convertCIDToText(value){
   if(!Array.isArray(value)) throw new Error("Received param is not an array!");
   const result = [];
@@ -144,7 +150,8 @@ function convertCIDToText(value){
   }
   return result.join("");
 }
-// CIDからこそこそ語(可逆)に変換
+/**CIDからこそこそ語(可逆)に変換
+ * @param {CID} value @return {string} */
 function convertCIDToKoso1(value){
   if(!Array.isArray(value)) throw new Error("Received param is not an array!");
   const result = [];
@@ -173,7 +180,8 @@ function convertCIDToKoso1(value){
   }
   return result.join("");
 }
-// CIDからこそこそ語(非可逆)に変換
+/** CIDからこそこそ語(非可逆)に変換
+ * @param {CID} value @return {string} koso2 */
 function convertCIDToKoso2(value){
   if(!Array.isArray(value)) throw new Error("Received param is not an array!");
   const result = [];

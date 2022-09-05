@@ -1,6 +1,7 @@
-const { SlashCommandBuilder, SlashCommandStringOption } = require('@discordjs/builders');
+import { SlashCommandBuilder, SlashCommandStringOption } from "@discordjs/builders";
+import { CommandInteraction } from "discord.js";
 
-module.exports = {
+export default {
   name: "translate",
 	data: new SlashCommandBuilder()
 		.setName('translate')
@@ -10,11 +11,9 @@ module.exports = {
       .setName("text")
       .setDescription("翻訳対象のテキスト")
       .setRequired(true)
-    ),
-    /**
-     * @param {import("discord.js").CommandInteraction} interaction 
-     */
-	async execute(interaction) {
+    )
+  ,
+	async execute(interaction:CommandInteraction) {
 		if(interaction.options.getString("text")
       .split("")
       .filter(c => c != "こ" && c != "そ")
