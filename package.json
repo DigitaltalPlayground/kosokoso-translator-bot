@@ -2,13 +2,15 @@
   "name": "kosokoso-translator-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx node src/entry",
     "apply": "npx node src/register",
     "applyapp": "npx node src/registerapp",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "mtripg6666tdr",
@@ -20,9 +22,17 @@
     "dotenv": "^10.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@mtripg6666tdr/commitlint-config": "^1.1.0",
     "@types/node": "^18.7.15",
     "@types/node-fetch": "^2.6.2",
+    "husky": "^8.0.1",
     "node": "^16.1.0",
     "typescript": "^4.8.2"
+  },
+  "commitlint": {
+    "extends": [
+      "@mtripg6666tdr/commitlint-config"
+    ]
   }
 }
