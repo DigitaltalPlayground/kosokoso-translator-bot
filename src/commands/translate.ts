@@ -18,9 +18,9 @@ export default {
       .split("")
       .filter(c => c != "こ" && c != "そ")
       .length > 0){
-        await require("./translatej").execute(interaction);
+        await require("./translatej").default.execute(interaction);
       }else{
-        await require("./translatek").execute(interaction);
+        await require("./translatek").default.execute(interaction);
       }
 	},
 };
