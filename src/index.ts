@@ -16,7 +16,7 @@ export default function Bot(token:string){
     .map(d => d.name)
     .filter(d => d.endsWith(".js"))
     .map(d => d.slice(0, -3))
-    .map(d => require("./commands/" + d) as {
+    .map(d => require("./commands/" + d).default as {
       data: import("@discordjs/builders").SlashCommandBuilder,
       execute: (interaction:CommandInteraction) => Promise<void>,
       name: string
