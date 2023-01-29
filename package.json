@@ -6,9 +6,9 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx node src/entry",
-    "apply": "npx node src/register",
-    "applyapp": "npx node src/registerapp",
+    "start": "node dist/entry",
+    "apply": "node dist/register",
+    "applyapp": "node dist/registerapp",
     "build": "tsc",
     "prepare": "husky install"
   },
